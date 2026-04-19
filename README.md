@@ -102,8 +102,9 @@ The dashboard provides multiple avenues for accessing the analyzed data:
 3.  **Install Dependencies:**
     ```bash
     # Install all required Python packages
-    pip install psycopg2-binary streamlit pandas yfinance matplotlib alpha_vantage
+    pip install streamlit psycopg2-binary pandas numpy plotly yfinance alpha_vantage matplotlib
     ```
+    Or simply run `pip install -r requirements.txt`.
 
 4.  **Configure Database Connection:**
     * Open `db_config.py` and modify the connection details to match your PostgreSQL setup:
