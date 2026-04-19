@@ -107,22 +107,25 @@ The dashboard provides multiple avenues for accessing the analyzed data:
     Or simply run `pip install -r requirements.txt`.
 
 4.  **Configure Database Connection:**
-    * Open `db_config.py` and modify the connection details to match your PostgreSQL setup:
-        ```python
-        # db_config.py
-        PG_HOST = "localhost"
-        PG_PORT = 5432
-        PG_DB   = "DemoDb"
-        PG_USER = "your_postgres_user"      # <-- CHANGE THIS
-        PG_PASS = "your_strong_password"  # <-- CHANGE THIS
-        ```
+    * Create file `Stocks_predictor/config.ini`:
+    ```ini 
+        [database]
+        host = YOUR_DB_HOST
+        port = 5432
+        dbname = YOUR_DATABASE_NAME
+        user = YOUR_DATABASE_USER_NAME
+        password = YOUR_DATABSE_PASSWORD
+    ```
+    with proper values.
 
 5.  **Initialize the Database Schema:**
-    * Run the `schema.sql` script in your PostgreSQL client (e.g., pgAdmin or psql) to create the `companies` and `stock_prices` tables.
+    * Run the `schema.sql` script in your PostgreSQL client (e.g. pgAdmin or psql) to create the `companies` and `stock_prices` tables.
     ```bash
     # Example using psql
-    psql -h localhost -d DemoDb -U postgres -f schema.sql
+    psql -h YOUR_DB_HOST -d YOUR_DATABASE_NAME -U YOUR_DATABASE_USER_NAME -f schema.sql
     ```
+
+    You can also use the Python script `Stocks_predictor/run_schema.py` to (re-)create the schema.
 
 6.  **Populate Companies List:**
     * Run the insertion script to populate the `companies` reference table.
