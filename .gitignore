@@ -19,6 +19,9 @@ ENV/
 .venv/
 .env/
 
+# Configuration files with credentials
+config.ini
+
 # Testing and coverage reports
 htmlcov/
 .tox/
