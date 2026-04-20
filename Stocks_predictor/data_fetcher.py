@@ -149,9 +149,10 @@ def insert_prices(df, ticker):
 
             # Flatten MultiIndex columns produced by recent yfinance versions
             def _get(col_name):
+                # TODO: This does not work, needs further investigation. For now, we rely on the fact that yfinance still produces simple column names.
                 # Try plain name first, then (name, ticker) MultiIndex key
-                if col_name in df.columns:
-                    return row_data[col_name]
+                #if col_name in df.columns:
+                #    return row_data[col_name]
                 for key in df.columns:
                     if isinstance(key, tuple) and key[0] == col_name:
                         return row_data[key]
