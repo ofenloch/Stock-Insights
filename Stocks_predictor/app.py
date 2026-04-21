@@ -13,7 +13,7 @@ from calculations import (
     compare_companies, get_close_price_column,
     add_technical_indicators,
 )
-from data_fetcher import get_company_list, run_fetching, get_latest_date
+from data_fetcher import get_company_list, run_fetching, get_latest_date, get_company_name
 
 selected_companies = []
 
@@ -511,8 +511,8 @@ with tab1:
 
         df        = add_technical_indicators(df)
         col_close = get_close_price_column(df)
-
-        st.markdown(f"### 📌 {ticker}")
+        company_name = get_company_name(ticker)
+        st.markdown(f"### 📌 {ticker} ({company_name})")
         st.metric("Latest Close Price", f"₹ {df[col_close].iloc[-1]:.2f}")
 
         if view_mode == "Overlay on Chart":

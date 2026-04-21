@@ -62,6 +62,22 @@ def get_company_list():
 
     return [r[0] for r in rows]
 
+# ------------------------------------------
+# Get the company name for a given ticker
+# ------------------------------------------
+def get_company_name(ticker):
+    """
+    Return the company name for a given ticker symbol.
+    """
+    conn = create_connection()
+    with conn.cursor() as cur:
+        cur.execute(
+            "SELECT company_name FROM companies WHERE ticker_symbol = %s;",
+            (ticker,),
+        )
+        row = cur.fetchone()
+    conn.close()
+    return row[0] if row else None
 
 # --------------------------
 # Get latest stored date
