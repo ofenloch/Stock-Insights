@@ -41,7 +41,7 @@ DEFAULT_COMPANIES = [
 ]
 
 
-def insert_companies():
+def insert_companies(COMPANIES: list[tuple[str, str]]):
     """
     Auto-insert default companies safely (idempotent).
     Mirrors the original MongoDB upsert behaviour exactly.
@@ -50,7 +50,7 @@ def insert_companies():
     inserted_count = 0
 
     with conn.cursor() as cur:
-        for name, ticker in DEFAULT_COMPANIES:
+        for name, ticker in COMPANIES:
             cur.execute(
                 """
                 INSERT INTO companies (company_name, ticker_symbol)
@@ -71,4 +71,5 @@ def insert_companies():
 
 
 if __name__ == "__main__":
-    insert_companies()
+    print("Inserting DEFAULT_COMPANIES ...")
+    insert_companies(DEFAULT_COMPANIES)
