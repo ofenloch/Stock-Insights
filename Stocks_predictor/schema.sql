@@ -4,17 +4,17 @@ DROP TABLE IF EXISTS stock_prices CASCADE;
 DROP TABLE IF EXISTS companies CASCADE;
 CREATE TABLE companies (
  company_id SERIAL PRIMARY KEY,
- company_name VARCHAR(100) NOT NULL ,
+ company_name VARCHAR(200) NOT NULL ,
  ticker_symbol VARCHAR(200) UNIQUE NOT NULL 
 );
 CREATE TABLE stock_prices (
     id SERIAL PRIMARY KEY,
     company_id INTEGER NOT NULL REFERENCES companies(company_id) ON DELETE CASCADE,
     trade_date DATE NOT NULL,
-    open_price NUMERIC(12, 4),
-    high_price NUMERIC(12, 4),
-    low_price NUMERIC(12, 4),
-    close_price NUMERIC(12, 4),
+    open_price NUMERIC(30,17),
+    high_price NUMERIC(30,17),
+    low_price NUMERIC(30,17),
+    close_price NUMERIC(30,17),
     volume BIGINT,
     UNIQUE(company_id, trade_date)
 );
