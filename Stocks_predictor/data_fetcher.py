@@ -9,6 +9,8 @@ import time
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
+    filename="data_fetcher.log",
+    filemode="a",
 )
 
 START_DATE          = date(2015, 1, 1)
