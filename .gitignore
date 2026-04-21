@@ -22,6 +22,9 @@ ENV/
 # Configuration files with credentials
 config.ini
 
+# Log files
+*.log
+
 # Testing and coverage reports
 htmlcov/
 .tox/
