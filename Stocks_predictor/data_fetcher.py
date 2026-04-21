@@ -14,7 +14,7 @@ logging.basicConfig(
 )
 
 START_DATE          = date(2015, 1, 1)
-REQUEST_PAUSE_SEC   = 0.3
+REQUEST_PAUSE_SEC   = 0.9   # To be polite to Yahoo's servers
 SAFETY_LOOKBACK_DAYS = 7   # Helps recover missing gaps from Yahoo
 
 
