@@ -115,17 +115,23 @@ The dashboard provides multiple avenues for accessing the analyzed data:
         dbname = YOUR_DATABASE_NAME
         user = YOUR_DATABASE_USER_NAME
         password = YOUR_DATABSE_PASSWORD
+        [dbadmin]
+        host = YOUR_DB_HOST
+        port = 5432
+        dbname = ADMIN_DB
+        user = ADMIN_USER
+        password = AdminPassWord
     ```
     with proper values.
 
 5.  **Initialize the Database Schema:**
-    * Run the `schema.sql` script in your PostgreSQL client (e.g. pgAdmin or psql) to create the `companies` and `stock_prices` tables.
+    * Run the `schema.sql` script in your PostgreSQL client (e.g. pgAdmin or psql) to setup the user and create the `companies` and `stock_prices` tables.
     ```bash
     # Example using psql
     psql -h YOUR_DB_HOST -d YOUR_DATABASE_NAME -U YOUR_DATABASE_USER_NAME -f schema.sql
     ```
 
-    You can also use the Python script `Stocks_predictor/run_schema.py` to (re-)create the schema.
+    You can also use the Python script `Stocks_predictor/run_schema.py` to (re-)create the schema: `python Stocks_predictor/run_schema.py`
 
 6.  **Populate Companies List:**
     * Run the insertion script to populate the `companies` reference table.
