@@ -21,18 +21,27 @@ SAFETY_LOOKBACK_DAYS = 7   # Helps recover missing gaps from Yahoo
 # --------------------------
 # Safe numeric conversion
 # --------------------------
-def safe_float(v):
+def safe_float(v) -> float:
+    """
+    return a float value represented by the given argument
+    if a conversion is not possible NaN is returned
+    """
     try:
         return float(v)
     except Exception:
-        return None
+        return float('nan')
 
 
-def safe_int(v):
+def safe_int(v) -> int | float:
+    """
+    return an integer value represented by the given argument
+    if a conversion is not possible NaN is returned
+    since there is no integer NaN in Python, a float NaN is returned in this case (and only in this case)
+    """
     try:
         return int(float(v))
     except Exception:
-        return 0
+        return float('nan')
 
 
 # --------------------------
