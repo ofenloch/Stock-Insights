@@ -1,5 +1,5 @@
 import os
-from db_config import create_connection, create_admin_connection
+from db_config import create_connection, set_up_database
 from psycopg2.extensions import connection
 
 def run_sql_script(sql_script_path: str, conn: connection):
@@ -40,11 +40,10 @@ def run_sql_script(sql_script_path: str, conn: connection):
             conn.close()
 
 if __name__ == "__main__":
-    
-    # Get the path to config.sql relative to this script
-    schema_path = os.path.join(os.path.dirname(__file__), 'config.sql')
-    # Run the config script (creating user, dbs, and granting permissions) using the admin connection
-    run_sql_script(schema_path, create_admin_connection())    
+
+    # PostgreSQL doesn't allow creating a database in a transaction block (CREATE DATABASE cannot run inside a transaction block)
+    # So we have to execute this manually and step by step in method set_up_database() and then run the schema.sql for creating tables using run_sql_script() method.
+    set_up_database()    
     
     
     
