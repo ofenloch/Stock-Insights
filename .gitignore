@@ -21,6 +21,7 @@ ENV/
 
 # Configuration files with credentials
 config.ini
+config.sql
 
 # Log files
 *.log
