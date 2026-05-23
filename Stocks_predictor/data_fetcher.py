@@ -219,10 +219,12 @@ def insert_prices(df, ticker):
 # MAIN DAILY UPDATER
 # --------------------------
 def run_fetching():
+    print("🚀 Starting DB Sync with Yahoo Finance …")
     tickers = get_company_list()
     logging.info(f"🚀 Running DB Sync for {len(tickers)} tickers")
 
     for ticker in tickers:
+        print(f"  ⏳ Fetching {ticker} …")
         last_dt = get_latest_date(ticker)
 
         # If DB has history, fetch with a small overlap to fill any gaps
@@ -239,7 +241,7 @@ def run_fetching():
         time.sleep(REQUEST_PAUSE_SEC)
 
     logging.info("✨ DB Sync Finished Successfully!")
-
+    print("✨ DB Sync Finished Successfully!")
 
 if __name__ == "__main__":
     run_fetching()
