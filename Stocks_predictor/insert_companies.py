@@ -162,6 +162,46 @@ MAJOR_GLOBAL_CURRENCIES = [
     ("USD/TRY", "TRY=X")
 ]
 
+# -----------------------------------
+# Tickers and portfolio weights
+# -----------------------------------
+
+# Microsoft (MSFT)                                              15%
+# NVIDIA (NVDA)                                                 20%
+# Taiwan Semiconductor (TSM)                                    10%
+# AMD                                                           10%
+# Rheinmetall (RHM.DE)                                          10%
+# Siemens Energy (ENR.DE)                                       10%
+# Palantir (PLTR)                                               10% 
+# Rocket Lab (RKLB)                                              5%
+# Cash: Xtrackers II Eurozone Government Bond 1-3 UCITS ETF 1C  10%
+portfolio = {
+    "MSFT":     0.15,
+    "NVDA":     0.20,
+    "TSM":      0.10,
+    "AMD":      0.10,
+    "RHM.DE":   0.10,
+    "ENR.DE":   0.10,
+    "PLTR":     0.10,
+    "RKLB":     0.05,
+    "DBXP.DE":  0.10
+}
+# Benchmarks: Invesco QQQ Trust (QQQ) and Invesco EQQQ Nasdaq-100 UCITS (EQQQ.DE)
+benchmark1 = "QQQ" # Benchmark: Invesco QQQ Trust
+benchmark2 = "EQQQ.DE" # Benchmark: Invesco EQQQ Nasdaq-100 UCITS
+
+PORTFOLIO_TICKERS = [
+        ("Microsoft Corporation", "MSFT"),
+        ("NVIDIA Corporation", "NVDA"),
+        ("Taiwan Semiconductor Manufacturing Company", "TSM"),
+        ("Advanced Micro Devices, Inc.", "AMD"),
+        ("Rheinmetall AG", "RHM.DE"),
+        ("Siemens Energy AG", "ENR.DE"),
+        ("Palantir Technologies Inc.", "PLTR"),
+        ("Rocket Lab USA Inc.", "RKLB"),
+        ("Xtrackers II Eurozone Government Bond 1-3 UCITS ETF 1C", "DBXP.DE")
+]
+
 def insert_companies(COMPANIES: list[tuple[str, str]]):
     """
     Auto-insert default companies safely (idempotent).
@@ -200,3 +240,5 @@ if __name__ == "__main__":
     insert_companies(MAJOR_GLOBAL_INDICES)
     print("Inserting MAJOR_GLOBAL_CURRENCIES ...")
     insert_companies(MAJOR_GLOBAL_CURRENCIES)
+    print("Inserting PORTFOLIO_TICKERS ...")
+    insert_companies(PORTFOLIO_TICKERS)
